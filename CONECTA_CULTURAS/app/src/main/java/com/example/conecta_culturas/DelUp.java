@@ -184,8 +184,11 @@ public class DelUp extends AppCompatActivity {
 //regresa a los saberes
     public void Cancelar(View v){
         Intent Home=new Intent(this,ListaSaberes.class);
-        startActivity(Home);
         finish();
+        overridePendingTransition(0, 0);
+        startActivity(Home);
+        overridePendingTransition(0, 0);
+
     }
     //metodo tomado de un ejemplo en la web
     //Método para obtener la posición de un ítem del spinner

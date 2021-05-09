@@ -3,6 +3,7 @@ package com.example.conecta_culturas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -166,7 +167,11 @@ protected ArrayList<String> IDs=new ArrayList<>();
 LV_NP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        NacPue=LV_NP.getItemAtPosition(position).toString();
+        NacPue=parent.getItemAtPosition(position).toString();
+        view.setBackgroundColor(Color.rgb(255,146,23)) ;
+
+
+
     }
 });
 LV_Item.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -174,8 +179,10 @@ LV_Item.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent Editar=new Intent(Search.this, vistaIndividual.class);
         Editar.putExtra("Identificador",IDs.get(position));
-        startActivity(Editar);
         finish();
+        overridePendingTransition(0, 0);
+        startActivity(Editar);
+        overridePendingTransition(0, 0);
     }
 });
 
@@ -214,7 +221,8 @@ LV_Item.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Toast.makeText(Search.this,"Completo",Toast.LENGTH_LONG).show();
-
+Datos.clear();
+IDs.clear();
                         int size = response.length();
                         for (int i = 0; i < size; i++) {
                             try {

@@ -83,8 +83,10 @@ public class vistaIndividual extends AppCompatActivity {
     }
     public void Cancelar(View v){
         Intent Home=new Intent(this,Search.class);
-        startActivity(Home);
         finish();
+        overridePendingTransition(0, 0);
+        startActivity(Home);
+        overridePendingTransition(0, 0);
     }
     private void CargarSaber(String tipArch, String nombre) {
         if(tipArch.equals("Video")){

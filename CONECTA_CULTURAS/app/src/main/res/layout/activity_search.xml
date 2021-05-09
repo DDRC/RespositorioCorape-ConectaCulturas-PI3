@@ -70,15 +70,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="336dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
     <ToggleButton
         android:id="@+id/tb_Aud"
         android:layout_width="56dp"
@@ -147,20 +138,19 @@
     <ListView
         android:id="@+id/lv_NP"
         android:layout_width="412dp"
-        android:layout_height="149dp"
-        android:layout_marginTop="16dp"
-        android:listSelector="#354395"
-
+        android:layout_height="250dp"
+        android:layout_marginTop="8dp"
+        android:background="#009688"
+        android:cacheColorHint="#FF3D00"
+        android:listSelector="?attr/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_Vid" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tb_Vid"></ListView>
     <ListView
         android:id="@+id/lv_Item"
-        android:layout_width="412dp"
-        android:layout_height="385dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="411dp"
+        android:layout_height="319dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" >
+        app:layout_constraintTop_toBottomOf="@+id/lv_NP">
 
     </ListView>
 

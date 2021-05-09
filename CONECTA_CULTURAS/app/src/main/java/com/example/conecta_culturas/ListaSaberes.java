@@ -76,8 +76,10 @@ private ArrayList<String> IDs= new ArrayList();
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent Editar=new Intent(ListaSaberes.this, DelUp.class);
             Editar.putExtra("Identificador",IDs.get(position));
-            startActivity(Editar);
             finish();
+            overridePendingTransition(0, 0);
+            startActivity(Editar);
+            overridePendingTransition(0, 0);
         }
     });
     //pone un listener en el textview de busqueda que filtra los saberes por el titulo
@@ -187,6 +189,9 @@ private ArrayList<String> IDs= new ArrayList();
 // envia al activity de Create para crear un nuevo saber dentro de la base datos
     public void Agregar(View v){
         Intent guardarActivity=new Intent(this, CRUD_repo.class);
+        finish();
+        overridePendingTransition(0, 0);
         startActivity(guardarActivity);
+        overridePendingTransition(0, 0);
     }
 }
