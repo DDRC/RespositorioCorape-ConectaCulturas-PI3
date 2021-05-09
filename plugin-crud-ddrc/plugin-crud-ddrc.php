@@ -234,13 +234,21 @@ add_action('admin_enqueue_scripts', 'EncolarBootstrapJS');
 /*DDRC-comentario: funcion que permite poner en cola la dependencia de bootstrap CSS*/
 function EncolarBootstrapCSS($hook)
 {
-    //echo "<script>console.log('$hook');</script>";
-    if ($hook != "toplevel_page_gestion_crud") {
+     //echo "<script>console.log('$hook');</script>";
+     if ($hook != "toplevel_page_gestion_crud") {
         return;
     }
     wp_enqueue_style('bootstrapcss', plugins_url('includes/bootstrap/css/bootstrap.min.css', __FILE__));
 }
+/*DDRC-comentario: funcion que permite poner en cola un css personlizado*/
+function EncolaCustomCSS($hook)
+{
+    add_editor_style('includes/css/vistaG.css');
+    wp_enqueue_style('customCSS', plugins_url('includes/css/vistaG.css', __FILE__));
+}
 add_action('admin_enqueue_scripts', 'EncolarBootstrapCSS');
+add_action('admin_enqueue_scripts', 'EncolaCustomCSS');
+add_action('init', 'EncolaCustomCSS');
 
 /*DDRC-comentario: funcion que carga un js perosnalizado*/
 function EncolarJS($hook)
@@ -334,6 +342,9 @@ function PrintShortcode($atts){
             
         }else if(isset($_POST['share_saber'])) {
             $html=$_short->ConstructorVista(1,null,null,null);
+                    return $html;
+        }else if(isset($_POST['cancelar'])) {
+            $html=$_short->ConstructorVista(4,null,null,null);
                     return $html;
             
         }

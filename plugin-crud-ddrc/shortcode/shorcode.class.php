@@ -82,26 +82,48 @@ class shortCode
     {
         if ($action == 1) {
             $alias = "Crear Saber";
-            $html = "
-        <button class='form-title-action' value='$id' name='$alias' id='$alias'>$alias</button>
+            $html = "<br>
+        <button class='btn btn-success' value='$id' name='$alias' id='$alias'>$alias</button>
+        <a href='' onclick='cancel()' class='btn btn-danger'>Cancelar</a>
         </form>
-        </div>";
+        </div>
+        <script>
+
+        function cancel(){
+            $_POST[cancelar];
+        }
+        </script>";
         } else if ($action == 2) {
             $alias = "Actualizar Saber";
-            $html = "
-        <button class='form-title-action' value='$id' name='$alias' id='$alias'>$alias</button>
+            $html = "<br>
+        <button class='btn btn-success' value='$id' name='$alias' id='$alias'>$alias</button>
+        <a href='' onclick='cancel()' class='btn btn-danger'>Cancelar</a>
         </form>
-        </div>";
+        </div>
+        <script>
+
+        function cancel(){
+            $_POST[cancelar];
+        }
+        </script>";
         } else if ($action == 3) {
             $alias = "Eliminar Saber";
-            $html = "
-        <button class='form-title-action' value='$id' name='$alias' id='$alias'>$alias</button>
+            $html = "<br>
+        <button class='btn btn-success' value='$id' name='$alias' id='$alias'>$alias</button>
+        <a href='' onclick='cancel()' class='btn btn-danger'>Cancelar</a>
         </form>
-        </div>";
+        </div>
+        <script>
+
+        function cancel(){
+            $_POST[cancelar];
+        }
+        </script>";
         } else if ($action == 4) {
             $html = '</tbody>
             </table>
-            </div>';
+            </div>
+            ';
         }
 
         return $html;
@@ -396,12 +418,13 @@ class shortCode
     public function NacPueGeneral()
     {
 
+
         $datos = ['Nacionalidad Achuar.jpg', 'Nacionalidad Andoa.jpg', 'Nacionalidad Awá.jpg', 'Nacionalidad Chachi.jpg', 'Nacionalidad Cofán.jpg', 'Nacionalidad Éperara Siapidara.jpg',
             'Nacionalidad Sápara.jpg', 'Nacionalidad Sekoya.jpg', 'Nacionalidad Shiwiar.jpg', 'Nacionalidad Shuar.jpg', 'Nacionalidad Siona.jpg', 'Nacionalidad Tsáchila.jpg',
             'Nacionalidad Waorani.jpg', 'Pueblo Chibuleo.jpg', 'Pueblo Kañari.jpg', 'Pueblo Karanki.jpg', 'Pueblo Kayambi.jpg', 'Pueblo Amazonía.jpg', 'Pueblo Kisapincha.jpg',
             'Pueblo Natabuela.jpg', 'Pueblo Otavalo.jpg', 'Pueblo Palta.jpg', 'Pueblo Panzaleo.jpg', 'Pueblo Pasto.jpg', 'Pueblo Puruwá.jpg', 'Pueblo Salasaka.jpg', 'Pueblo Saraguro.jpg',
             'Pueblo Tomabela.jpg', 'Pueblo Waranka.jpg', 'Pueblo Afroecuatoriano.jpg', 'Pueblo Huancavilca.jpg', 'Pueblo Manta.jpg', 'Pueblo Montuvios.jpg'];
-        $nombres = ['Nacionalidad Achuar', 'Nacionalidad Andoa', 'Nacionalidad Awá', 'Nacionalidad Chachi', 'Nacionalidad Cofán', 'Nacionalidad Éperara Siapidara',
+        $nombres = ['Nacionalidad Achuar', 'Nacionalidad Andoa', 'Nacionalidad Awá', 'Nacionalidad Chachi', 'Nacionalidad Cofán', 'Nacionalidad Épera',
             'Nacionalidad Sápara', 'Nacionalidad Sekoya', 'Nacionalidad Shiwiar', 'Nacionalidad Shuar', 'Nacionalidad Siona', 'Nacionalidad Tsáchila',
             'Nacionalidad Waorani', 'Pueblo Chibuleo', 'Pueblo Kañari', 'Pueblo Karanki', 'Pueblo Kayambi', 'Pueblo Amazonía', 'Pueblo Kisapincha',
             'Pueblo Natabuela', 'Pueblo Otavalo', 'Pueblo Palta', 'Pueblo Panzaleo', 'Pueblo Pasto', 'Pueblo Puruwá', 'Pueblo Salasaka', 'Pueblo Saraguro',
@@ -409,23 +432,33 @@ class shortCode
         $index=0;
         $html = "<form action='' method='post' name='valorForm'>
         <div class='container'>
-            <div class='row'>";
+        
+            ";
             while ($index != sizeof($datos)) {
                 
                 $ruta="/wordpress/wp-content/uploads/Saberes/PueblosNacionalidades/".$datos[$index];
-                $html.="<div class='col-6' style='display:inline'>
-                <img src='$ruta' alt='$nombres[$index]'name='$nombres[$index]' value='$nombres[$index]' id='$nombres[$index]' 
-                onclick='vuela(this)' width='25%' heigth='25%'>
-            </div>";
+                $html.="
+                <div class='Saber' width='30%' heigth='30%' style='background:url($ruta); background-size: cover;'>
+                <div class='tituloSaber' >
+                    <h3>$nombres[$index]</h3>
+                </div>
+                    <img src='$ruta' alt='$nombres[$index]'name='$nombres[$index]' value='$nombres[$index]' id='$nombres[$index]' 
+                    onclick='vuela(this)' width='25%' heigth='25%'> 
+                    
+                
+                </div>
+                
+                
+            ";
             $index++;
             }
                $html .= "
                <input type='hidden' name='seleccionado' id='seleccionado'>
-            </div>
+            
         </div>
         </form>
         <script>
- 
+
         function vuela(coso){
             document.getElementById('seleccionado').value=coso.name;
             document.valorForm.submit();
@@ -499,10 +532,11 @@ class shortCode
             $temas=$value['TagsTematicas'];
             $id=$value['ID'];
             $html .= "<div class='col' style='display:inline-block' onclick='selec(this)' name='$id' value='$id' id='$id'>
-                <h2>$titulo</h2>
-                <h4>$Nacion</h4>
-                <pre>$descripcion</pre>
-                <p><b>Tematicas:</b> $temas</p>
+                <center><h2>$titulo</h2></center>
+                <h3 >$Nacion</h3>
+                <pre  class='text'>$descripcion</pre>
+                <p class='text'><b>Tematicas:</b> $temas</p>
+                <br>
                 $sourceFile
                 </div>";
         }
@@ -539,16 +573,21 @@ class shortCode
             $sourceFile = "<textarea name actual value style='resize:none' readonly cols='30' rows='10'>
             " .
                 // Abriendo el archivo
-                file_get_contents($filePath)
+                file_get_contents($RealPath1)
                 . "</textarea>";
         }
-        $html = "<div class='col' style='display:inline-block'>
-        <h2>$titulo</h2>
-        <h4>$Nacion</h4>
-        <pre>$descripcion</pre>
-        <p><b>Tematicas:</b> $temas</p>
+        $html = "<div class='col' style='display:block'>
+        <center><h2 class='title'>$titulo</h2></center>
+        <br>
+        <h4 class='title1'>$Nacion</h4>
+        <br><spacer>
         $sourceFile
+        <br>
+        <pre class='text'>$descripcion</pre>
+        <p class='text'><b>Tematicas:</b> $temas</p>
+        
         </div>";
         return $html;
     }
 }
+?>

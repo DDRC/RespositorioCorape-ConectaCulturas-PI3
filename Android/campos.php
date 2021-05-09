@@ -13,16 +13,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $nombreImagen=($_POST['NombreSaber']);
     $imagen=$_POST['Imagen'];
     if($KindOf=="Imagen"){
-        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/uploads/Saberes/Imagenes/$nombreImagen";
+        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/plugins/plugin-crud-ddrc/shortcode/../../../uploads/Saberes/Imagenes/$nombreImagen";
         $rutaImagenRelatica="../wordpress/wp-content/uploads/Saberes/Imagenes/$nombreImagen";    
     }elseif($KindOf=="Video"){
-        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/uploads/Saberes/Videos/$nombreImagen";
+        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/plugins/plugin-crud-ddrc/shortcode/../../../uploads/Saberes/Videos/$nombreImagen";
         $rutaImagenRelatica="../wordpress/wp-content/uploads/Saberes/Videos/$nombreImagen";    
     }elseif($KindOf=="Audio"){
-        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/uploads/Saberes/Audios/$nombreImagen";
+        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/plugins/plugin-crud-ddrc/shortcode/../../../uploads/Saberes/Audios/$nombreImagen";
         $rutaImagenRelatica="../wordpress/wp-content/uploads/Saberes/Audios/$nombreImagen";    
     }elseif($KindOf=="Texto"){
-        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/uploads/Saberes/Textos/$nombreImagen";
+        $rutaImagen="C:/xampp/htdocs/wordpress/wp-content/plugins/plugin-crud-ddrc/shortcode/../../../uploads/Saberes/Textos/$nombreImagen";
         $rutaImagenRelatica="../wordpress/wp-content/uploads/Saberes/Textos/$nombreImagen";    
     
     }
